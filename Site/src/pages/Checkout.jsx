@@ -111,7 +111,7 @@ const Checkout = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="w-full px-3 py-2 border border-dark-600 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-primary-500"
                   />
                 </div>
                 <div>
@@ -124,7 +124,7 @@ const Checkout = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="w-full px-3 py-2 border border-dark-600 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-primary-500"
                   />
                 </div>
                 <div className="md:col-span-2">
@@ -137,7 +137,7 @@ const Checkout = () => {
                     value={formData.address}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="w-full px-3 py-2 border border-dark-600 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-primary-500"
                   />
                 </div>
                 <div>
@@ -150,7 +150,7 @@ const Checkout = () => {
                     value={formData.city}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="w-full px-3 py-2 border border-dark-600 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-primary-500"
                   />
                 </div>
                 <div>
@@ -163,7 +163,7 @@ const Checkout = () => {
                     value={formData.zipCode}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="w-full px-3 py-2 border border-dark-600 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-primary-500"
                   />
                 </div>
               </div>
@@ -184,7 +184,7 @@ const Checkout = () => {
                     onChange={handleInputChange}
                     required
                     placeholder="1234 5678 9012 3456"
-                    className="w-full px-3 py-2 border border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="w-full px-3 py-2 border border-dark-600 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-primary-500"
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
@@ -199,7 +199,7 @@ const Checkout = () => {
                       onChange={handleInputChange}
                       required
                       placeholder="MM/YY"
-                      className="w-full px-3 py-2 border border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                      className="w-full px-3 py-2 border border-dark-600 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-primary-500"
                     />
                   </div>
                   <div>
@@ -213,7 +213,7 @@ const Checkout = () => {
                       onChange={handleInputChange}
                       required
                       placeholder="123"
-                      className="w-full px-3 py-2 border border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                      className="w-full px-3 py-2 border border-dark-600 rounded-lg text-black focus:outline-none focus:ring-2 focus:ring-primary-500"
                     />
                   </div>
                 </div>
