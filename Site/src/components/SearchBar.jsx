@@ -1,42 +1,39 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 
-const SearchBar = () => {
-  const [query, setQuery] = useState("");
-
+const SearchBar = ({ query, onQueryChange }) => {
   const handleSearch = (event) => {
     event.preventDefault();
-    // Implement search functionality here
-    console.log("Searching for:", query);
+    // Filtering is live via query, so nothing else needed here.
   };
 
   return (
     <motion.form
       onSubmit={handleSearch}
-      className="flex items-center max-w-md mx-auto mb-8"
+      className="flex flex-col sm:flex-row items-stretch max-w-2xl w-full mx-auto mb-10 gap-3 sm:gap-4"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2 }}
     >
       <motion.div
         className="relative flex-1"
-        whileHover={{ scale: 1.02 }}
-        transition={{ type: "spring", stiffness: 300 }}
+        whileHover={{ scale: 1.01 }}
+        transition={{ type: "spring", stiffness: 260 }}
       >
         <input
           type="text"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e) => onQueryChange(e.target.value)}
           placeholder="Search for electronic components..."
-          className="input w-full rounded-l-lg pr-12 pl-4 py-3 text-lg"
+          className="input w-full pr-12 pl-5 py-4 text-base sm:text-lg rounded-xl sm:rounded-r-none"
         />
         <motion.div
-          className="absolute right-3 top-1/2 transform -translate-y-1/2"
-          animate={{ x: query ? 0 : 10, opacity: query ? 1 : 0.5 }}
+          className="absolute right-4 top-1/2 -translate-y-1/2"
+          animate={{ x: query ? 0 : 6, opacity: query ? 1 : 0.6 }}
           transition={{ duration: 0.2 }}
         >
           <svg
-            className="w-5 h-5 text-dark-500"
+            className="w-5 h-5 text-dark-300"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -50,11 +47,12 @@ const SearchBar = () => {
           </svg>
         </motion.div>
       </motion.div>
+
       <motion.button
         type="submit"
-        className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-semibold py-3 px-6 rounded-r-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
+        className="bg-gradient-to-r from-primary-600 to-secondary-600 text-dark-950 font-semibold py-4 px-8 rounded-xl sm:rounded-l-none shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 text-base"
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.97 }}
       >
         <motion.span
           initial={{ opacity: 0 }}

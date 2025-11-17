@@ -1,3 +1,4 @@
+// About.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import { motionVariants } from "../animations/motionVariants";
@@ -15,7 +16,7 @@ const About = () => {
         variants={motionVariants.fadeInUp}
       >
         <motion.h1
-          className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary-600 via-secondary-600 to-primary-800 bg-clip-text text-transparent"
+          className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary-400 via-secondary-400 to-primary-500 bg-clip-text text-transparent"
           variants={motionVariants.title}
           initial="hidden"
           animate="visible"
@@ -23,12 +24,14 @@ const About = () => {
           About Us
         </motion.h1>
         <motion.p
-          className="text-xl text-dark-600 max-w-2xl mx-auto leading-relaxed"
+          className="text-xl text-dark-200 max-w-2xl mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
         >
-          Learn more about our mission to provide high-quality electronic components for makers, engineers, and hobbyists worldwide.
+          We are on a mission to make high–quality electronic components
+          accessible to makers, engineers, and hobbyists around the globe.
+          Explore who we are and what drives us.
         </motion.p>
       </motion.div>
 
@@ -43,9 +46,16 @@ const About = () => {
           variants={motionVariants.card}
           whileHover="hover"
         >
-          <h2 className="text-2xl font-bold mb-4 text-primary-400">Our Story</h2>
+          <h2 className="text-2xl font-bold mb-4 text-primary-400">
+            Our Story
+          </h2>
           <p className="text-dark-300 leading-relaxed">
-            Founded in 2020, our electronic components store was born out of a passion for innovation and a desire to make high-quality electronics accessible to everyone. We started as a small team of engineers and have grown into a trusted source for components used in projects ranging from simple DIY electronics to complex IoT solutions.
+            Founded in 2020, we started as a small group of electronics
+            enthusiasts who struggled to find reliable parts for our own
+            projects. What began as a tiny inventory in a single room has grown
+            into a curated store that serves students, professionals, and
+            product teams working on everything from first prototypes to
+            full-scale deployments.
           </p>
         </motion.div>
 
@@ -54,9 +64,15 @@ const About = () => {
           variants={motionVariants.card}
           whileHover="hover"
         >
-          <h2 className="text-2xl font-bold mb-4 text-primary-400">Our Mission</h2>
+          <h2 className="text-2xl font-bold mb-4 text-primary-400">
+            Our Mission
+          </h2>
           <p className="text-dark-300 leading-relaxed">
-            Our mission is to empower creators, educators, and professionals by providing a comprehensive selection of electronic components at competitive prices. We believe in fostering innovation and supporting the global maker community through reliable products and exceptional customer service.
+            Our mission is to remove friction from building hardware. We focus
+            on stocking dependable components, clear documentation, and
+            responsive support so you can spend less time hunting for parts and
+            more time shipping your ideas. From classroom labs to robotics
+            startups, we aim to be your trusted electronics partner.
           </p>
         </motion.div>
       </motion.div>
@@ -68,7 +84,9 @@ const About = () => {
         animate="visible"
         transition={{ delay: 0.6 }}
       >
-        <h2 className="text-3xl font-bold mb-8 text-dark-100">Why Choose Us?</h2>
+        <h2 className="text-3xl font-bold mb-8 text-dark-50">
+          Why Choose Us?
+        </h2>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <motion.div
             className="card text-center"
@@ -76,8 +94,13 @@ const About = () => {
             whileHover="hover"
           >
             <div className="text-4xl mb-4">🚀</div>
-            <h3 className="text-xl font-bold mb-2">Fast Shipping</h3>
-            <p className="text-dark-300">Quick and reliable delivery worldwide.</p>
+            <h3 className="text-xl font-bold mb-2 text-dark-50">
+              Fast Shipping
+            </h3>
+            <p className="text-dark-300">
+              Optimized logistics and trusted partners mean your components
+              reach you quickly and safely.
+            </p>
           </motion.div>
           <motion.div
             className="card text-center"
@@ -85,8 +108,13 @@ const About = () => {
             whileHover="hover"
           >
             <div className="text-4xl mb-4">🔧</div>
-            <h3 className="text-xl font-bold mb-2">Quality Components</h3>
-            <p className="text-dark-300">Authentic parts from trusted manufacturers.</p>
+            <h3 className="text-xl font-bold mb-2 text-dark-50">
+              Quality Components
+            </h3>
+            <p className="text-dark-300">
+              Carefully sourced, tested parts from reliable manufacturers
+              designed for real-world projects.
+            </p>
           </motion.div>
           <motion.div
             className="card text-center"
@@ -94,8 +122,13 @@ const About = () => {
             whileHover="hover"
           >
             <div className="text-4xl mb-4">💬</div>
-            <h3 className="text-xl font-bold mb-2">Expert Support</h3>
-            <p className="text-dark-300">Get help from our knowledgeable team.</p>
+            <h3 className="text-xl font-bold mb-2 text-dark-50">
+              Expert Support
+            </h3>
+            <p className="text-dark-300">
+              A friendly, technical support team ready to help you debug,
+              decide, and ship faster.
+            </p>
           </motion.div>
         </div>
       </motion.div>

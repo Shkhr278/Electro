@@ -1,3 +1,4 @@
+// Checkout.jsx
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { motionVariants } from "../animations/motionVariants";
@@ -29,9 +30,8 @@ const Checkout = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
     console.log("Order submitted:", { formData, cart, totalPrice });
-    alert("Order placed successfully!");
+    alert("Order placed successfully! A confirmation email has been sent.");
   };
 
   return (
@@ -42,7 +42,7 @@ const Checkout = () => {
       variants={motionVariants.staggerContainer}
     >
       <motion.h1
-        className="text-4xl md:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-primary-600 via-secondary-600 to-primary-800 bg-clip-text text-transparent"
+        className="text-4xl md:text-5xl font-bold text-center mb-8 bg-gradient-to-r from-primary-400 via-secondary-400 to-primary-500 bg-clip-text text-transparent"
         variants={motionVariants.title}
         initial="hidden"
         animate="visible"
@@ -58,26 +58,48 @@ const Checkout = () => {
           initial="hidden"
           animate="visible"
         >
-          <h2 className="text-2xl font-bold mb-6 text-dark-100">
+          <h2 className="text-2xl font-bold mb-2 text-dark-50">
             Order Summary
           </h2>
+          <p className="text-sm text-dark-400 mb-6">
+            {totalItems === 0
+              ? "No items in your cart yet."
+              : `Review your items before placing the order.`}
+          </p>
           <div className="space-y-4">
             {cart.map((item) => (
-              <div key={item.id} className="flex justify-between items-center">
+              <div
+                key={item.id}
+                className="flex justify-between items-center text-sm"
+              >
                 <div>
-                  <h3 className="font-semibold">{item.title}</h3>
-                  <p className="text-sm text-dark-400">
+                  <h3 className="font-semibold text-dark-50">
+                    {item.title}
+                  </h3>
+                  <p className="text-dark-400">
                     Quantity: {item.quantity}
                   </p>
                 </div>
-                <span className="font-bold">
+                <span className="font-bold text-dark-50">
                   ${(item.price * item.quantity).toFixed(2)}
                 </span>
               </div>
             ))}
             <hr className="border-dark-700" />
-            <div className="flex justify-between text-xl font-bold">
-              <span>Total</span>
+            <div className="flex justify-between text-base font-semibold">
+              <span className="text-dark-300">Subtotal</span>
+              <span className="text-dark-50">
+                ${totalPrice.toFixed(2)}
+              </span>
+            </div>
+            <div className="flex justify-between text-base font-semibold">
+              <span className="text-dark-300">Estimated Tax</span>
+              <span className="text-dark-50">
+                ${(totalPrice * 0.08).toFixed(2)}
+              </span>
+            </div>
+            <div className="flex justify-between text-xl font-bold mt-2">
+              <span className="text-dark-50">Total</span>
               <span className="text-primary-400">
                 ${(totalPrice + totalPrice * 0.08).toFixed(2)}
               </span>
@@ -93,13 +115,15 @@ const Checkout = () => {
           animate="visible"
           transition={{ delay: 0.2 }}
         >
-          <h2 className="text-2xl font-bold mb-6 text-dark-100">
+          <h2 className="text-2xl font-bold mb-6 text-dark-50">
             Shipping & Payment Information
           </h2>
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Shipping Information */}
             <div>
-              <h3 className="text-lg font-semibold mb-4">Shipping Address</h3>
+              <h3 className="text-lg font-semibold mb-4 text-dark-50">
+                Shipping Address
+              </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-dark-300 mb-1">
@@ -111,7 +135,7 @@ const Checkout = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="input w-full"
                   />
                 </div>
                 <div>
@@ -124,7 +148,7 @@ const Checkout = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="input w-full"
                   />
                 </div>
                 <div className="md:col-span-2">
@@ -137,7 +161,7 @@ const Checkout = () => {
                     value={formData.address}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="input w-full"
                   />
                 </div>
                 <div>
@@ -150,7 +174,7 @@ const Checkout = () => {
                     value={formData.city}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="input w-full"
                   />
                 </div>
                 <div>
@@ -163,7 +187,7 @@ const Checkout = () => {
                     value={formData.zipCode}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-3 py-2 border border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="input w-full"
                   />
                 </div>
               </div>
@@ -171,7 +195,9 @@ const Checkout = () => {
 
             {/* Payment Information */}
             <div>
-              <h3 className="text-lg font-semibold mb-4">Payment Details</h3>
+              <h3 className="text-lg font-semibold mb-4 text-dark-50">
+                Payment Details
+              </h3>
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-dark-300 mb-1">
@@ -184,7 +210,7 @@ const Checkout = () => {
                     onChange={handleInputChange}
                     required
                     placeholder="1234 5678 9012 3456"
-                    className="w-full px-3 py-2 border border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                    className="input w-full"
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
@@ -199,7 +225,7 @@ const Checkout = () => {
                       onChange={handleInputChange}
                       required
                       placeholder="MM/YY"
-                      className="w-full px-3 py-2 border border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                      className="input w-full"
                     />
                   </div>
                   <div>
@@ -213,7 +239,7 @@ const Checkout = () => {
                       onChange={handleInputChange}
                       required
                       placeholder="123"
-                      className="w-full px-3 py-2 border border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
+                      className="input w-full"
                     />
                   </div>
                 </div>
@@ -222,7 +248,7 @@ const Checkout = () => {
 
             <motion.button
               type="submit"
-              className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-bold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+              className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 text-dark-950 font-bold py-4 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >

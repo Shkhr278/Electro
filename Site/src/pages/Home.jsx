@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import SearchBar from "../components/SearchBar";
@@ -10,6 +10,10 @@ const Home = () => {
   const navigate = useNavigate();
   const { addToCart } = useAppContext();
 
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedSubcategory, setSelectedSubcategory] = useState("");
+  const [searchQuery, setSearchQuery] = useState(""); // NEW
+
   const products = [
     {
       id: 1,
@@ -19,6 +23,8 @@ const Home = () => {
       price: 22.99,
       imageUrl:
         "https://via.placeholder.com/400x300/4F46E5/FFFFFF?text=Arduino+Uno",
+      category: "Microcontrollers",
+      subcategory: "Arduino",
     },
     {
       id: 2,
@@ -28,6 +34,8 @@ const Home = () => {
       price: 35.99,
       imageUrl:
         "https://via.placeholder.com/400x300/DC2626/FFFFFF?text=Raspberry+Pi+4",
+      category: "Development Boards",
+      subcategory: "Raspberry Pi",
     },
     {
       id: 3,
@@ -36,6 +44,8 @@ const Home = () => {
         "Low-cost, low-power system on a chip microcontroller with Wi-Fi and Bluetooth.",
       price: 8.99,
       imageUrl: "https://via.placeholder.com/400x300/059669/FFFFFF?text=ESP32",
+      category: "Development Boards",
+      subcategory: "ESP32",
     },
     {
       id: 4,
@@ -45,6 +55,8 @@ const Home = () => {
       price: 15.99,
       imageUrl:
         "https://via.placeholder.com/400x300/7C3AED/FFFFFF?text=LED+Strip",
+      category: "LEDs",
+      subcategory: "RGB Strips",
     },
     {
       id: 5,
@@ -54,6 +66,8 @@ const Home = () => {
       price: 12.99,
       imageUrl:
         "https://via.placeholder.com/400x300/EA580C/FFFFFF?text=Servo+Motor",
+      category: "Motors",
+      subcategory: "Servo Motors",
     },
     {
       id: 6,
@@ -63,8 +77,47 @@ const Home = () => {
       price: 6.99,
       imageUrl:
         "https://via.placeholder.com/400x300/0891B2/FFFFFF?text=Breadboard",
+      category: "Prototyping Tools",
+      subcategory: "Breadboards",
     },
   ];
+
+  const categories = [...new Set(products.map((p) => p.category))];
+
+  const subcategories = useMemo(() => {
+    if (!selectedCategory) return [];
+    return [
+      ...new Set(
+        products
+          .filter((p) => p.category === selectedCategory)
+          .map((p) => p.subcategory)
+      ),
+    ];
+  }, [selectedCategory, products]);
+
+  const filteredProducts = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase(); // NEW
+
+    return products.filter((p) => {
+      if (selectedCategory && p.category !== selectedCategory) return false;
+      if (selectedSubcategory && p.subcategory !== selectedSubcategory)
+        return false;
+
+      if (!q) return true;
+
+      const haystack = (
+        p.title +
+        " " +
+        p.description +
+        " " +
+        p.category +
+        " " +
+        p.subcategory
+      ).toLowerCase();
+
+      return haystack.includes(q);
+    });
+  }, [selectedCategory, selectedSubcategory, searchQuery, products]); // searchQuery added
 
   return (
     <motion.div
@@ -78,7 +131,7 @@ const Home = () => {
         variants={motionVariants.fadeInUp}
       >
         <motion.h1
-          className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary-600 via-secondary-600 to-primary-800 bg-clip-text text-transparent"
+          className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent"
           variants={motionVariants.title}
           initial="hidden"
           animate="visible"
@@ -86,7 +139,7 @@ const Home = () => {
           Welcome to the Electronic Components Store
         </motion.h1>
         <motion.p
-          className="text-xl text-dark-600 max-w-2xl mx-auto leading-relaxed"
+          className="text-xl text-dark-200 max-w-2xl mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
@@ -102,7 +155,10 @@ const Home = () => {
         animate="visible"
         transition={{ delay: 0.2 }}
       >
-        <SearchBar />
+        <SearchBar
+          query={searchQuery}
+          onQueryChange={setSearchQuery}
+        />
       </motion.div>
 
       <motion.div
@@ -112,9 +168,41 @@ const Home = () => {
         animate="visible"
         transition={{ delay: 0.4 }}
       >
-        <h2 className="text-3xl font-bold text-center mb-8 text-dark-100">
+        <h2 className="text-3xl font-bold text-center mb-8 text-dark-50">
           Featured Products
         </h2>
+
+        <div className="flex flex-wrap justify-center gap-4 mb-8">
+          <select
+            value={selectedCategory}
+            onChange={(e) => {
+              setSelectedCategory(e.target.value);
+              setSelectedSubcategory("");
+            }}
+            className="input px-4 py-2 min-w-[200px]"
+          >
+            <option value="">All Categories</option>
+            {categories.map((cat) => (
+              <option key={cat} value={cat}>
+                {cat}
+              </option>
+            ))}
+          </select>
+
+          <select
+            value={selectedSubcategory}
+            onChange={(e) => setSelectedSubcategory(e.target.value)}
+            className="input px-4 py-2 min-w-[200px]"
+            disabled={!selectedCategory}
+          >
+            <option value="">All Subcategories</option>
+            {subcategories.map((sub) => (
+              <option key={sub} value={sub}>
+                {sub}
+              </option>
+            ))}
+          </select>
+        </div>
       </motion.div>
 
       <motion.div
@@ -123,7 +211,7 @@ const Home = () => {
         initial="hidden"
         animate="visible"
       >
-        {products.map((product, index) => (
+        {filteredProducts.map((product) => (
           <motion.div
             key={product.id}
             variants={motionVariants.card}
@@ -136,6 +224,7 @@ const Home = () => {
               price={product.price}
               imageUrl={product.imageUrl}
               onAddToCart={() => addToCart(product)}
+              onClick={() => navigate(`/component/${product.id}`)}
             />
           </motion.div>
         ))}
@@ -149,7 +238,7 @@ const Home = () => {
         transition={{ delay: 0.8 }}
       >
         <motion.button
-          className="bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
+          className="bg-gradient-to-r from-primary-600 to-secondary-600 text-dark-950 font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => navigate("/catalog")}

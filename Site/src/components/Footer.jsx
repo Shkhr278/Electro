@@ -1,7 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const footerLinks = [
+    { to: "/privacy", label: "Privacy Policy" },
+    { to: "/terms", label: "Terms of Service" },
+    { to: "/contact", label: "Contact Us" },
+  ];
+
   return (
     <motion.footer
       className="footer"
@@ -9,9 +16,9 @@ const Footer = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, delay: 0.2 }}
     >
-      <div className="container mx-auto text-center">
+      <div className="container mx-auto text-center px-4 py-4">
         <motion.p
-          className="text-lg font-medium mb-4"
+          className="text-sm md:text-base font-medium text-dark-200 mb-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
@@ -19,8 +26,9 @@ const Footer = () => {
           &copy; {new Date().getFullYear()} Electronic Components. All rights
           reserved.
         </motion.p>
+
         <motion.div
-          className="flex justify-center space-x-8"
+          className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-8"
           initial="hidden"
           animate="visible"
           variants={{
@@ -34,22 +42,21 @@ const Footer = () => {
             },
           }}
         >
-          {[
-            { href: "/privacy", label: "Privacy Policy" },
-            { href: "/terms", label: "Terms of Service" },
-            { href: "/contact", label: "Contact Us" },
-          ].map((item, index) => (
-            <motion.a
+          {footerLinks.map((item, index) => (
+            <motion.div
               key={index}
-              href={item.href}
-              className="hover:text-primary-300 transition-colors duration-200 text-base font-medium"
               variants={{
                 hidden: { y: 20, opacity: 0 },
                 visible: { y: 0, opacity: 1 },
               }}
             >
-              {item.label}
-            </motion.a>
+              <Link
+                to={item.to}
+                className="text-sm md:text-base font-medium text-dark-200 hover:text-primary-600 transition-colors duration-200"
+              >
+                {item.label}
+              </Link>
+            </motion.div>
           ))}
         </motion.div>
       </div>

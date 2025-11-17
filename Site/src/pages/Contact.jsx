@@ -1,3 +1,4 @@
+// Contact.jsx
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { motionVariants } from "../animations/motionVariants";
@@ -16,9 +17,8 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
     console.log("Form submitted:", formData);
-    alert("Thank you for your message! We'll get back to you soon.");
+    alert("Thank you for your message! Our team will get back to you shortly.");
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
@@ -34,7 +34,7 @@ const Contact = () => {
         variants={motionVariants.fadeInUp}
       >
         <motion.h1
-          className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary-600 via-secondary-600 to-primary-800 bg-clip-text text-transparent"
+          className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary-400 via-secondary-400 to-primary-500 bg-clip-text text-transparent"
           variants={motionVariants.title}
           initial="hidden"
           animate="visible"
@@ -42,13 +42,13 @@ const Contact = () => {
           Contact Us
         </motion.h1>
         <motion.p
-          className="text-xl text-dark-600 max-w-2xl mx-auto leading-relaxed"
+          className="text-xl text-dark-200 max-w-2xl mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
         >
-          Have a question or need support? Get in touch with our team. We're
-          here to help!
+          Need help choosing components, tracking an order, or planning a build?
+          Send us a message and we will respond as soon as possible.
         </motion.p>
       </motion.div>
 
@@ -115,7 +115,7 @@ const Contact = () => {
                 onChange={handleChange}
                 required
                 className="input w-full"
-                placeholder="What's this about?"
+                placeholder="What can we help you with?"
               />
             </div>
             <div>
@@ -133,12 +133,12 @@ const Contact = () => {
                 required
                 rows="5"
                 className="input w-full resize-none"
-                placeholder="Tell us how we can help you..."
+                placeholder="Share details about your question or project..."
               ></textarea>
             </div>
             <motion.button
               type="submit"
-              className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+              className="w-full bg-gradient-to-r from-primary-600 to-secondary-600 text-dark-950 font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -162,21 +162,21 @@ const Contact = () => {
               <div className="flex items-center">
                 <div className="text-2xl mr-4">📧</div>
                 <div>
-                  <p className="font-semibold">Email</p>
+                  <p className="font-semibold text-dark-50">Email</p>
                   <p className="text-dark-300">support@electrostore.com</p>
                 </div>
               </div>
               <div className="flex items-center">
                 <div className="text-2xl mr-4">📞</div>
                 <div>
-                  <p className="font-semibold">Phone</p>
+                  <p className="font-semibold text-dark-50">Phone</p>
                   <p className="text-dark-300">+1 (555) 123-4567</p>
                 </div>
               </div>
               <div className="flex items-center">
                 <div className="text-2xl mr-4">📍</div>
                 <div>
-                  <p className="font-semibold">Address</p>
+                  <p className="font-semibold text-dark-50">Address</p>
                   <p className="text-dark-300">
                     123 Electronics Ave
                     <br />
@@ -192,9 +192,13 @@ const Contact = () => {
               Business Hours
             </h2>
             <div className="space-y-2 text-dark-300">
-              <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
-              <p>Saturday: 10:00 AM - 4:00 PM</p>
+              <p>Monday – Friday: 9:00 AM – 6:00 PM</p>
+              <p>Saturday: 10:00 AM – 4:00 PM</p>
               <p>Sunday: Closed</p>
+              <p className="text-xs text-dark-500 mt-2">
+                Response times may vary during holidays and peak seasons, but we
+                do our best to reply within one business day.
+              </p>
             </div>
           </div>
         </motion.div>

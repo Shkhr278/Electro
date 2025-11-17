@@ -1,3 +1,4 @@
+// Terms.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import { motionVariants } from "../animations/motionVariants";
@@ -15,7 +16,7 @@ const Terms = () => {
         variants={motionVariants.fadeInUp}
       >
         <motion.h1
-          className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary-600 via-secondary-600 to-primary-800 bg-clip-text text-transparent"
+          className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary-400 via-secondary-400 to-primary-500 bg-clip-text text-transparent"
           variants={motionVariants.title}
           initial="hidden"
           animate="visible"
@@ -23,12 +24,13 @@ const Terms = () => {
           Terms of Service
         </motion.h1>
         <motion.p
-          className="text-xl text-dark-600 max-w-2xl mx-auto leading-relaxed"
+          className="text-xl text-dark-200 max-w-2xl mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
         >
-          Please read these terms carefully before using our website and services.
+          These terms explain how you may use our website, place orders, and
+          interact with our services. Please review them carefully.
         </motion.p>
       </motion.div>
 
@@ -43,9 +45,14 @@ const Terms = () => {
           variants={motionVariants.card}
           whileHover="hover"
         >
-          <h2 className="text-2xl font-bold mb-4 text-primary-400">Acceptance of Terms</h2>
+          <h2 className="text-2xl font-bold mb-4 text-primary-400">
+            Acceptance of Terms
+          </h2>
           <p className="text-dark-300 leading-relaxed">
-            By accessing and using the Electronic Components Store website, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.
+            By accessing or using the Electronic Components Store website, you
+            agree to be bound by these Terms of Service and any additional
+            policies referenced here. If you do not agree to these terms, you
+            should not use our site or services.
           </p>
         </motion.div>
 
@@ -54,18 +61,22 @@ const Terms = () => {
           variants={motionVariants.card}
           whileHover="hover"
         >
-          <h2 className="text-2xl font-bold mb-4 text-primary-400">Use License</h2>
+          <h2 className="text-2xl font-bold mb-4 text-primary-400">
+            Use License
+          </h2>
           <p className="text-dark-300 leading-relaxed mb-4">
-            Permission is granted to temporarily download one copy of the materials on Electronic Components Store's website for personal, non-commercial transitory viewing only.
+            You are granted a limited, non-exclusive, non-transferable license
+            to access and use the materials on our website for personal,
+            non-commercial, and temporary viewing only.
           </p>
           <p className="text-dark-300 leading-relaxed">
-            This is the grant of a license, not a transfer of title, and under this license you may not:
+            Under this license you may not:
           </p>
           <ul className="text-dark-300 leading-relaxed space-y-1 mt-2 ml-4">
             <li>• Modify or copy the materials</li>
-            <li>• Use the materials for any commercial purpose or for any public display</li>
-            <li>• Attempt to decompile or reverse engineer any software contained on the website</li>
-            <li>• Remove any copyright or other proprietary notations from the materials</li>
+            <li>• Use the materials for any commercial or public display</li>
+            <li>• Attempt to decompile or reverse engineer any software</li>
+            <li>• Remove any copyright or proprietary notices</li>
           </ul>
         </motion.div>
 
@@ -74,12 +85,18 @@ const Terms = () => {
           variants={motionVariants.card}
           whileHover="hover"
         >
-          <h2 className="text-2xl font-bold mb-4 text-primary-400">Products and Services</h2>
+          <h2 className="text-2xl font-bold mb-4 text-primary-400">
+            Products and Services
+          </h2>
           <p className="text-dark-300 leading-relaxed mb-4">
-            All products and services are subject to availability. We reserve the right to discontinue any product or service at any time.
+            All products, descriptions, and prices are subject to change without
+            notice. Availability may vary, and we reserve the right to limit
+            quantities, discontinue items, or correct errors in pricing or
+            product information at any time.
           </p>
           <p className="text-dark-300 leading-relaxed">
-            Prices for our products are subject to change without notice. We reserve the right to modify or cancel orders if we discover an error in product information or pricing.
+            If we discover an error affecting your order, we may contact you to
+            confirm, adjust, or cancel the order before processing.
           </p>
         </motion.div>
 
@@ -88,12 +105,17 @@ const Terms = () => {
           variants={motionVariants.card}
           whileHover="hover"
         >
-          <h2 className="text-2xl font-bold mb-4 text-primary-400">Billing and Account Information</h2>
+          <h2 className="text-2xl font-bold mb-4 text-primary-400">
+            Billing and Account Information
+          </h2>
           <p className="text-dark-300 leading-relaxed mb-4">
-            You agree to provide current, complete, and accurate purchase and account information for all purchases made at our store.
+            You agree to provide current, complete, and accurate purchase and
+            account information for all orders made on our site.
           </p>
           <p className="text-dark-300 leading-relaxed">
-            You agree to promptly update your account and other information, including your email address and credit card numbers and expiration dates, so that we can complete your transactions and contact you as needed.
+            You are responsible for promptly updating your account details,
+            including email address, billing address, and payment information,
+            so that we can complete your transactions and contact you as needed.
           </p>
         </motion.div>
 
@@ -102,12 +124,18 @@ const Terms = () => {
           variants={motionVariants.card}
           whileHover="hover"
         >
-          <h2 className="text-2xl font-bold mb-4 text-primary-400">Returns and Refunds</h2>
+          <h2 className="text-2xl font-bold mb-4 text-primary-400">
+            Returns and Refunds
+          </h2>
           <p className="text-dark-300 leading-relaxed mb-4">
-            We offer a 30-day return policy for most items. Items must be returned in their original condition and packaging.
+            Most items are eligible for return within 30 days of delivery,
+            provided they are unused, in original condition, and include all
+            packaging and accessories.
           </p>
           <p className="text-dark-300 leading-relaxed">
-            Refunds will be processed within 5-7 business days after receipt and inspection of the returned item. Shipping costs are non-refundable unless the return is due to our error.
+            After we receive and inspect your return, approved refunds are
+            issued within 5–7 business days. Shipping charges are generally
+            non-refundable unless the return is due to an error on our part.
           </p>
         </motion.div>
 
@@ -116,16 +144,27 @@ const Terms = () => {
           variants={motionVariants.card}
           whileHover="hover"
         >
-          <h2 className="text-2xl font-bold mb-4 text-primary-400">Prohibited Uses</h2>
+          <h2 className="text-2xl font-bold mb-4 text-primary-400">
+            Prohibited Uses
+          </h2>
           <p className="text-dark-300 leading-relaxed">
-            You may not use our products or services:
+            You agree not to use our site or services:
           </p>
           <ul className="text-dark-300 leading-relaxed space-y-1 mt-2 ml-4">
-            <li>• For any unlawful purpose or to solicit others to perform unlawful acts</li>
-            <li>• To violate any international, federal, provincial, or state regulations, rules, laws, or local ordinances</li>
-            <li>• To infringe upon or violate our intellectual property rights or the intellectual property rights of others</li>
-            <li>• To harass, abuse, insult, harm, defame, slander, disparage, intimidate, or discriminate</li>
-            <li>• To submit false or misleading information</li>
+            <li>
+              • For any unlawful purpose or to encourage others to engage in
+              unlawful acts
+            </li>
+            <li>
+              • To violate any applicable laws, regulations, or local ordinances
+            </li>
+            <li>
+              • To infringe upon our intellectual property or that of others
+            </li>
+            <li>
+              • To harass, abuse, insult, harm, defame, or discriminate
+            </li>
+            <li>• To submit false, misleading, or fraudulent information</li>
           </ul>
         </motion.div>
 
@@ -134,9 +173,14 @@ const Terms = () => {
           variants={motionVariants.card}
           whileHover="hover"
         >
-          <h2 className="text-2xl font-bold mb-4 text-primary-400">Disclaimer</h2>
+          <h2 className="text-2xl font-bold mb-4 text-primary-400">
+            Disclaimer
+          </h2>
           <p className="text-dark-300 leading-relaxed">
-            The materials on our website are provided on an 'as is' basis. We make no warranties, expressed or implied, and hereby disclaim and negate all other warranties including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
+            The materials on our website are provided on an “as is” and “as
+            available” basis. We make no warranties, express or implied,
+            including but not limited to implied warranties of merchantability,
+            fitness for a particular purpose, and non-infringement.
           </p>
         </motion.div>
 
@@ -145,9 +189,15 @@ const Terms = () => {
           variants={motionVariants.card}
           whileHover="hover"
         >
-          <h2 className="text-2xl font-bold mb-4 text-primary-400">Limitations</h2>
+          <h2 className="text-2xl font-bold mb-4 text-primary-400">
+            Limitations
+          </h2>
           <p className="text-dark-300 leading-relaxed">
-            In no event shall Electronic Components Store or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on our website, even if we or our authorized representative has been notified orally or in writing of the possibility of such damage.
+            In no event shall Electronic Components Store or its suppliers be
+            liable for any indirect, incidental, special, or consequential
+            damages arising from the use or inability to use the materials on
+            our website, even if we have been advised of the possibility of such
+            damages.
           </p>
         </motion.div>
 
@@ -156,12 +206,16 @@ const Terms = () => {
           variants={motionVariants.card}
           whileHover="hover"
         >
-          <h2 className="text-2xl font-bold mb-4 text-primary-400">Changes to Terms</h2>
-          <p className="text-dark-300 leading-relaxed">
-            We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days notice prior to any new terms taking effect.
+          <h2 className="text-2xl font-bold mb-4 text-primary-400">
+            Changes to Terms
+          </h2>
+          <p className="text-dark-300 leading-relaxed mb-2">
+            We may update these Terms of Service from time to time. Changes take
+            effect when posted on this page. Continued use of the site after
+            changes are published constitutes acceptance of the revised terms.
           </p>
-          <p className="text-dark-300 leading-relaxed text-sm mt-4">
-            Last updated: October 2023
+          <p className="text-dark-300 leading-relaxed text-sm mt-2">
+            Last updated: November 2025
           </p>
         </motion.div>
       </motion.div>
