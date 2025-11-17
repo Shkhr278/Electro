@@ -23,7 +23,8 @@ const Footer = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          &copy; {new Date().getFullYear()} 
+          &copy; {new Date().getFullYear()} Electronic Components. All rights
+          reserved.
         </motion.p>
 
         <motion.div
