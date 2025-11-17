@@ -1,9 +1,9 @@
 export const Component = {
-  id: '',
-  name: '',
-  description: '',
+  id: "",
+  name: "",
+  description: "",
   price: 0,
-  imageUrl: '',
+  imageUrl: "",
   specifications: {},
 };
 
@@ -15,8 +15,8 @@ export const ApiResponse = {
 };
 
 export const SearchParams = {
-  query: '',
-  category: '',
-  sortBy: 'name',
-  sortOrder: 'asc',
+  query: "",
+  category: "",
+  sortBy: "name",
+  sortOrder: "asc",
 };
