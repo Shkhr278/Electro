@@ -23,7 +23,7 @@ const Header = () => {
     >
       <div className="container mx-auto flex justify-between items-center">
         <motion.h1
-          className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent"
+          className="text-2xl md:text-3xl font-bold text-white"
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
@@ -68,7 +68,7 @@ const Header = () => {
 
         {/* Mobile menu button */}
         <button
-          className="md:hidden text-dark-200 hover:text-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-lg p-1"
+          className="md:hidden text-white hover:text-white focus:outline-none focus:ring-2 focus:ring-transparent rounded-lg p-1"
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
@@ -96,7 +96,7 @@ const Header = () => {
       {/* Mobile nav */}
       {isMenuOpen && (
         <motion.div
-          className="md:hidden mt-4 border-t border-dark-700 pt-4 bg-dark-900/90 rounded-b-xl"
+          className="md:hidden mt-4 border-t border-transparent pt-4 bg-transparent rounded-b-xl"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}

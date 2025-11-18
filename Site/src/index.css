@@ -2,16 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base styles */
 @layer base {
   html {
-    @apply bg-dark-950 text-dark-50;
+    @apply bg-transparent text-white;
   }
 
   body {
-    @apply bg-dark-950 text-dark-50 font-sans antialiased transition-colors duration-300;
+    @apply bg-transparent text-white font-sans antialiased transition-colors duration-300;
   }
 }
 
+/* Components */
 @layer components {
   /* Typography */
   h1,
@@ -20,41 +22,41 @@
   h4,
   h5,
   h6 {
-    @apply font-bold text-dark-50;
+    @apply font-bold text-white;
   }
 
   a {
-    @apply text-primary-400 hover:text-primary-300 transition-colors duration-200;
+    @apply text-white hover:text-white transition-colors duration-200;
   }
 
   /* Primary button */
   button {
-    @apply bg-primary-600 text-dark-950 font-semibold py-2 px-4 rounded-lg shadow-lg
-           hover:bg-primary-700 hover:shadow-xl
-           focus:outline-none focus:ring-2 focus:ring-primary-500
+    @apply bg-transparent text-white font-semibold py-2 px-4 rounded-lg shadow-lg
+           hover:bg-transparent hover:shadow-xl
+           focus:outline-none focus:ring-2 focus:ring-transparent
            transition-all duration-300 transform hover:-translate-y-0.5;
   }
 
   /* Generic card */
   .card {
-    @apply bg-dark-900 rounded-xl shadow-lg p-6
-           border border-dark-700
+    @apply bg-transparent rounded-xl shadow-lg p-6
+           border border-transparent
            transition-all duration-300 transform
-           hover:scale-105 hover:shadow-xl hover:border-primary-600;
+           hover:scale-105 hover:shadow-xl hover:border-transparent;
   }
 
   /* Header & navbar */
   .header {
-    @apply bg-dark-900 shadow-lg border-b border-dark-700;
+    @apply bg-transparent shadow-lg border-b border-transparent;
   }
 
   .nav-link {
-    @apply text-dark-100 hover:text-primary-400 transition-colors duration-200 relative;
+    @apply text-white hover:text-white transition-colors duration-200 relative;
   }
 
   .nav-link::after {
     content: "";
-    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300;
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-transparent transition-all duration-300;
   }
 
   .nav-link:hover::after {
@@ -63,15 +65,15 @@
 
   /* Footer */
   .footer {
-    @apply bg-dark-900 text-dark-200 py-6 border-t border-dark-700;
+    @apply bg-transparent text-white py-6 border-t border-transparent;
   }
 
   /* Inputs / text fields */
   .input {
-    @apply border border-dark-600 rounded-lg p-3
-           bg-dark-900 text-dark-50
-           placeholder-dark-400
-           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500
+    @apply border border-transparent rounded-lg p-3
+           bg-transparent text-white
+           placeholder-white
+           focus:outline-none focus:ring-2 focus:ring-transparent focus:border-transparent
            transition-all duration-200;
   }
 }

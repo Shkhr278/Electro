@@ -18,7 +18,7 @@ const Footer = () => {
     >
       <div className="container mx-auto text-center px-4 py-4">
         <motion.p
-          className="text-sm md:text-base font-medium text-dark-200 mb-4"
+          className="text-sm md:text-base font-medium text-white mb-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
@@ -52,7 +52,7 @@ const Footer = () => {
             >
               <Link
                 to={item.to}
-                className="text-sm md:text-base font-medium text-dark-200 hover:text-primary-600 transition-colors duration-200"
+                className="text-sm md:text-base font-medium text-white hover:text-white transition-colors duration-200"
               >
                 {item.label}
               </Link>

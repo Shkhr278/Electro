@@ -33,7 +33,7 @@ const SearchBar = ({ query, onQueryChange }) => {
           transition={{ duration: 0.2 }}
         >
           <svg
-            className="w-5 h-5 text-dark-300"
+            className="w-5 h-5 text-white"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -50,7 +50,7 @@ const SearchBar = ({ query, onQueryChange }) => {
 
       <motion.button
         type="submit"
-        className="bg-gradient-to-r from-primary-600 to-secondary-600 text-dark-950 font-semibold py-4 px-8 rounded-xl sm:rounded-l-none shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 text-base"
+        className="bg-transparent text-white font-semibold py-4 px-8 rounded-xl sm:rounded-l-none shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 text-base"
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
       >
