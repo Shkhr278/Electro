@@ -1,8 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { motionVariants } from "../animations/motionVariants";
+import BlurText from "../components/BlurText";
 
 const About = () => {
+  const handleAnimationComplete = () => {
+    console.log("Animation completed!");
+  };
   return (
     <motion.div
       className="container mx-auto px-4 py-12"
@@ -15,11 +19,18 @@ const About = () => {
         variants={motionVariants.fadeInUp}
       >
         <motion.h1
-          className="text-5xl md:text-6xl font-bold mb-4 text-white"
-          variants={motionVariants.title}
-        >
-          About Us
-        </motion.h1>
+        className="flex flex-col items-center justify-center text-center mb-8"
+        variants={motionVariants.title}
+      >
+        <BlurText
+          text="About Us"
+          delay={150}
+          animateBy="words"
+          direction="top"
+          onAnimationComplete={handleAnimationComplete}
+          className="block text-5xl md:text-5xl font-bold text-white leading-tight"
+        />
+      </motion.h1>
         <motion.p
           className="text-lg text-white/80 max-w-2xl mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
@@ -77,9 +88,19 @@ const About = () => {
         variants={motionVariants.fadeInUp}
         transition={{ delay: 0.6 }}
       >
-        <h2 className="text-3xl font-bold mb-8 text-white">
-          Why Choose Us?
-        </h2>
+        <motion.h1
+        className="flex flex-col items-center justify-center text-center mb-8"
+        variants={motionVariants.title}
+      >
+        <BlurText
+          text="Why choose us?"
+          delay={150}
+          animateBy="words"
+          direction="top"
+          onAnimationComplete={handleAnimationComplete}
+          className="block text-3xl md:text-4xl font-bold text-white leading-tight"
+        />
+      </motion.h1>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <motion.div
             className="card backdrop-blur-sm text-center"

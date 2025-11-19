@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { motionVariants } from "../animations/motionVariants";
+import BlurText from "../components/BlurText";
 
 const Contact = () => {
+  const handleAnimationComplete = () => {
+    console.log("Animation completed!");
+  };
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -29,14 +33,20 @@ const Contact = () => {
       variants={motionVariants.staggerContainer}
     >
       <motion.div
-        className="text-center mb-12"
+        className="flex flex-col items-center justify-center text-center mb-12 px-6"
         variants={motionVariants.fadeInUp}
+        initial="hidden"
+        animate="visible"
       >
-        <motion.h1
-          className="text-5xl md:text-6xl font-bold mb-4 text-white"
-          variants={motionVariants.title}
-        >
-          Contact Us
+        <motion.h1 className="mb-4" variants={motionVariants.title}>
+          <BlurText
+            text="Contact Us"
+            delay={150}
+            animateBy="words"
+            direction="top"
+            onAnimationComplete={handleAnimationComplete}
+            className="block text-5xl md:text-5xl font-bold text-white leading-tight"
+          />
         </motion.h1>
         <motion.p
           className="text-lg text-white/80 max-w-2xl mx-auto leading-relaxed"

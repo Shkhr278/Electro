@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { motionVariants } from "../animations/motionVariants";
 import { useAppContext } from "../contexts/AppContext";
+import BlurText from "../components/BlurText";
 
 const Checkout = () => {
+  const handleAnimationComplete = () => {
+    console.log("Animation completed!");
+  };
   const { cart, getTotalPrice, getTotalItems } = useAppContext();
   const [formData, setFormData] = useState({
     name: "",
@@ -40,12 +44,16 @@ const Checkout = () => {
       animate="visible"
       variants={motionVariants.staggerContainer}
     >
-      <motion.h1
-        className="text-4xl md:text-5xl font-bold text-center mb-8 text-white"
-        variants={motionVariants.title}
-      >
-        Checkout
-      </motion.h1>
+      <motion.h1 className="mb-4" variants={motionVariants.title}>
+          <BlurText
+            text="Checkout"
+            delay={150}
+            animateBy="words"
+            direction="top"
+            onAnimationComplete={handleAnimationComplete}
+            className="block text-5xl md:text-5xl font-bold text-white leading-tight"
+          />
+        </motion.h1>
 
       <div className="grid grid-cols-1  lg:grid-cols-2 gap-8">
         {/* Order Summary */}

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import DecryptedText from "./DecryptedText";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const navItems = [
@@ -27,7 +27,19 @@ const Header = () => {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300 }}
         >
-          <Link to="/">Electronic Components</Link>
+          <Link to="/" aria-label="Go to homepage" className="inline-block">
+            <DecryptedText
+              text="Electronic Components"
+              animateOn="view"        // <-- runs automatically when element is in viewport (page load)
+              revealDirection="center"
+              speed={100}              // <-- change this value to make the animation faster/slower (ms)
+              maxIterations={20}
+              className="text-2xl md:text-3xl font-bold text-white"
+              parentClassName=""
+              encryptedClassName=""
+            />
+            {/* To change animation speed: edit `speed={50}` above. Lower = faster, higher = slower. */}
+          </Link>
         </motion.h1>
 
         {/* Desktop nav */}
@@ -55,10 +67,7 @@ const Header = () => {
                   visible: { y: 0, opacity: 1 },
                 }}
               >
-                <Link
-                  to={item.to}
-                  className="nav-link text-sm md:text-lg font-medium"
-                >
+                <Link to={item.to} className="nav-link text-sm md:text-lg font-medium">
                   {item.label}
                 </Link>
               </motion.li>
@@ -68,17 +77,11 @@ const Header = () => {
 
         {/* Mobile menu button */}
         <button
-          className="md:hidden text-white hover:text-white focus:outline-none focus:ring-2 focus:ring-transparent rounded-lg p-1"
+          className="md:hidden text-white hover:text-white focus:outline-none rounded-lg p-1"
           onClick={toggleMenu}
           aria-label="Toggle menu"
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -104,11 +107,7 @@ const Header = () => {
           <ul className="flex flex-col space-y-3 px-2">
             {navItems.map((item, index) => (
               <li key={index}>
-                <Link
-                  to={item.to}
-                  className="nav-link block py-2 text-base font-medium"
-                  onClick={() => setIsMenuOpen(false)}
-                >
+                <Link to={item.to} className="nav-link block py-2 text-base font-medium" onClick={() => setIsMenuOpen(false)}>
                   {item.label}
                 </Link>
               </li>

@@ -1,8 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { motionVariants } from "../animations/motionVariants";
+import BlurText from "../components/BlurText";
 
 const Terms = () => {
+  const handleAnimationComplete = () => {
+    console.log("Animation completed!");
+  };
   return (
     <motion.div
       className="container mx-auto px-4 py-12"
@@ -15,11 +19,18 @@ const Terms = () => {
         variants={motionVariants.fadeInUp}
       >
         <motion.h1
-          className="text-5xl md:text-6xl font-bold mb-4 text-white"
-          variants={motionVariants.title}
-        >
-          Terms of Service
-        </motion.h1>
+        className="flex flex-col items-center justify-center text-center mb-8"
+        variants={motionVariants.title}
+      >
+        <BlurText
+          text="Terms of Services"
+          delay={150}
+          animateBy="words"
+          direction="top"
+          onAnimationComplete={handleAnimationComplete}
+          className="block text-5xl md:text-5xl font-bold text-white leading-tight"
+        />
+      </motion.h1>
         <motion.p
           className="text-lg text-white/80 max-w-2xl mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 20 }}

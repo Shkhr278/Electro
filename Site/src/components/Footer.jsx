@@ -9,6 +9,14 @@ const Footer = () => {
     { to: "/contact", label: "Contact Us" },
   ];
 
+  const handleScrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth", // change to "smooth" if you want animation
+    });
+  };
+
   return (
     <motion.footer
       className="footer backdrop-blur-sm"
@@ -52,6 +60,7 @@ const Footer = () => {
             >
               <Link
                 to={item.to}
+                onClick={handleScrollTop}
                 className="text-sm md:text-base font-medium text-white hover:text-white transition-colors duration-200"
               >
                 {item.label}

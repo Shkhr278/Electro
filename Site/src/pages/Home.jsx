@@ -5,14 +5,19 @@ import SearchBar from "../components/SearchBar";
 import ProductCard from "../components/ProductCard";
 import { motionVariants } from "../animations/motionVariants";
 import { useAppContext } from "../contexts/AppContext";
+import BlurText from "../components/BlurText";
 
 const Home = () => {
   const navigate = useNavigate();
+  const handleAnimationComplete = () => {
+    console.log("Animation completed!");
+  };
+
   const { addToCart } = useAppContext();
 
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedSubcategory, setSelectedSubcategory] = useState("");
-  const [searchQuery, setSearchQuery] = useState(""); // NEW
+  const [searchQuery, setSearchQuery] = useState("");
 
   const products = [
     {
@@ -82,10 +87,8 @@ const Home = () => {
     },
   ];
 
-  
-
   const filteredProducts = useMemo(() => {
-    const q = searchQuery.trim().toLowerCase(); // NEW
+    const q = searchQuery.trim().toLowerCase();
 
     return products.filter((p) => {
       if (selectedCategory && p.category !== selectedCategory) return false;
@@ -106,7 +109,7 @@ const Home = () => {
 
       return haystack.includes(q);
     });
-  }, [selectedCategory, selectedSubcategory, searchQuery, products]); // searchQuery added
+  }, [selectedCategory, selectedSubcategory, searchQuery, products]);
 
   return (
     <motion.div
@@ -116,19 +119,24 @@ const Home = () => {
       variants={motionVariants.staggerContainer}
     >
       <motion.div
-        className="text-center mb-12"
+        className="flex flex-col items-center justify-center text-center mb-12 px-6"
         variants={motionVariants.fadeInUp}
+        initial="hidden"
+        animate="visible"
       >
-        <motion.h1
-          className="text-5xl md:text-6xl font-bold mb-4 text-white"
-          variants={motionVariants.title}
-          initial="hidden"
-          animate="visible"
-        >
-          Welcome to the Electronic Components Store
+        <motion.h1 className="mb-4" variants={motionVariants.title}>
+          <BlurText
+            text="Welcome to the Electronic Components Store"
+            delay={150}
+            animateBy="words"
+            direction="top"
+            onAnimationComplete={handleAnimationComplete}
+            className="block text-6xl md:text-5xl font-bold text-white leading-tight"
+          />
         </motion.h1>
+
         <motion.p
-          className="text-xl text-white max-w-2xl mx-auto leading-relaxed"
+          className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
@@ -144,10 +152,7 @@ const Home = () => {
         animate="visible"
         transition={{ delay: 0.2 }}
       >
-        <SearchBar
-          query={searchQuery}
-          onQueryChange={setSearchQuery}
-        />
+        <SearchBar query={searchQuery} onQueryChange={setSearchQuery} />
       </motion.div>
 
       <motion.div
@@ -160,8 +165,6 @@ const Home = () => {
         <h2 className="text-3xl font-bold text-center mb-8 text-white">
           Featured Products
         </h2>
-
-        
       </motion.div>
 
       <motion.div

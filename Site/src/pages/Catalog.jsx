@@ -5,10 +5,14 @@ import ProductCard from "../components/ProductCard";
 import { motion } from "framer-motion";
 import { motionVariants } from "../animations/motionVariants";
 import { useAppContext } from "../contexts/AppContext";
+import BlurText from "../components/BlurText";
 
 const Catalog = () => {
   const { addToCart } = useAppContext();
   const navigate = useNavigate();
+  const handleAnimationComplete = () => {
+    console.log("Animation completed!");
+  };
 
   const components = [
     {
@@ -77,14 +81,21 @@ const Catalog = () => {
       variants={motionVariants.staggerContainer}
     >
       <motion.div
-        className="text-center mb-10"
+        className="flex flex-col items-center justify-center text-center mb-10 px-6"
         variants={motionVariants.fadeInUp}
+        initial="hidden"
+        animate="visible"
       >
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-          Component Catalog
-        </h1>
+        <BlurText
+          text="Component Catalog"
+          delay={150}
+          animateBy="words"
+          direction="top"
+          onAnimationComplete={handleAnimationComplete}
+          className="block text-6xl md:text-5xl font-bold text-white leading-tight mb-8"
+        />
 
-        <p className="text-lg text-white max-w-2xl mx-auto leading-relaxed">
+        <p className="text-lg text-white/80 max-w-2xl mx-auto leading-relaxed">
           Explore our full range of electronic components. Mix and match parts
           to prototype, experiment, and build production-ready hardware.
         </p>

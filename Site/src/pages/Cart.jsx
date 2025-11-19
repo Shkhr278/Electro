@@ -3,9 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useAppContext } from "../contexts/AppContext";
 import { motionVariants } from "../animations/motionVariants";
+import BlurText from "../components/BlurText";
 
 const Cart = () => {
   const navigate = useNavigate();
+  const handleAnimationComplete = () => {
+    console.log("Animation completed!");
+  };
   const { cart, removeFromCart, updateQuantity, getTotalPrice, getTotalItems } =
     useAppContext();
 
@@ -21,10 +25,17 @@ const Cart = () => {
     >
       {/* Page Title */}
       <motion.h1
-        className="text-4xl md:text-5xl font-bold text-center mb-8 text-white"
+        className="flex flex-col items-center justify-center text-center mb-8"
         variants={motionVariants.title}
       >
-        Your Shopping Cart
+        <BlurText
+          text="Your Shopping Cart"
+          delay={150}
+          animateBy="words"
+          direction="top"
+          onAnimationComplete={handleAnimationComplete}
+          className="block text-5xl md:text-5xl font-bold text-white leading-tight"
+        />
       </motion.h1>
 
       {/* Empty Cart */}
@@ -46,7 +57,8 @@ const Cart = () => {
           </h2>
 
           <p className="text-white mb-8">
-            Browse our components and add items to start building your next project.
+            Browse our components and add items to start building your next
+            project.
           </p>
 
           <motion.button
@@ -80,7 +92,10 @@ const Cart = () => {
             variants={motionVariants.staggerContainer}
           >
             {/* Cart Items */}
-            <motion.div className="space-y-6 " variants={motionVariants.fadeInUp}>
+            <motion.div
+              className="space-y-6 "
+              variants={motionVariants.fadeInUp}
+            >
               {cart.map((item, index) => (
                 <motion.div
                   key={item.id}
@@ -113,9 +128,7 @@ const Cart = () => {
 
                   <div className="flex items-center space-x-2">
                     <motion.button
-                      onClick={() =>
-                        updateQuantity(item.id, item.quantity - 1)
-                      }
+                      onClick={() => updateQuantity(item.id, item.quantity - 1)}
                       className="bg-white/10 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
@@ -128,9 +141,7 @@ const Cart = () => {
                     </span>
 
                     <motion.button
-                      onClick={() =>
-                        updateQuantity(item.id, item.quantity + 1)
-                      }
+                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
                       className="bg-white/10 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
@@ -176,7 +187,8 @@ const Cart = () => {
               <div className="space-y-4">
                 <div className="flex justify-between">
                   <span className="text-white">
-                    Subtotal ({totalItems} {totalItems === 1 ? "item" : "items"})
+                    Subtotal ({totalItems} {totalItems === 1 ? "item" : "items"}
+                    )
                   </span>
 
                   <span className="font-semibold text-white">
