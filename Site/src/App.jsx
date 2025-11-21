@@ -11,7 +11,9 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
-import ErrorPage from "./pages/ErrorPage"
+import ErrorPage from "./pages/ErrorPage";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = () => {
   return (
@@ -32,6 +34,19 @@ const App = () => {
           </Route>
         </Routes>
       </Router>
+
+      <ToastContainer
+        position="bottom-left"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={true}
+        rtl={false}
+        pauseOnFocusLoss={true}
+        pauseOnHover={false}
+        draggable={true}
+        theme="dark"
+      />
     </AppProvider>
   );
 };

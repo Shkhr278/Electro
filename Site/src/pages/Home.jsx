@@ -6,6 +6,7 @@ import ProductCard from "../components/ProductCard";
 import { motionVariants } from "../animations/motionVariants";
 import { useAppContext } from "../contexts/AppContext";
 import BlurText from "../components/BlurText";
+import arduinoImg from "../assets/arduino.png";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -33,10 +34,9 @@ const Home = () => {
       description:
         "Microcontroller board based on the ATmega328P with 14 digital input/output pins.",
       price: 22.99,
-      imageUrl:
-        "https://via.placeholder.com/400x300/4F46E5/FFFFFF?text=Arduino+Uno",
       category: "Microcontrollers",
       subcategory: "Arduino",
+      image: arduinoImg,
     },
     {
       id: 2,
@@ -193,7 +193,10 @@ const Home = () => {
               price={product.price}
               imageUrl={product.imageUrl}
               onAddToCart={() => addToCart(product)}
-              onClick={() => {handleScrollTop();navigate(`/component/${product.id}`)}}
+              onClick={() => {
+                handleScrollTop();
+                navigate(`/component/${product.id}`);
+              }}
             />
           </motion.div>
         ))}
@@ -210,7 +213,10 @@ const Home = () => {
           className="bg-transparent backdrop-blur-sm text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={() => { handleScrollTop(); navigate("/catalog")}}
+          onClick={() => {
+            handleScrollTop();
+            navigate("/catalog");
+          }}
         >
           View All Products
         </motion.button>

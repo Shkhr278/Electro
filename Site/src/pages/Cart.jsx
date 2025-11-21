@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { useAppContext } from "../contexts/AppContext";
 import { motionVariants } from "../animations/motionVariants";
 import BlurText from "../components/BlurText";
+import arduinoImg from "../assets/arduino.png";
+
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -11,7 +13,7 @@ const Cart = () => {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "smooth", // change to "smooth" if you want animation
+      behavior: "smooth",
     });
   };
   const handleAnimationComplete = () => {
@@ -72,7 +74,10 @@ const Cart = () => {
             className="bg-transparent border-2 border-white text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-white hover:text-black transition-all duration-300 transform hover:-translate-y-1"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => {handleScrollTop(); navigate("/")}}
+            onClick={() => {
+              handleScrollTop();
+              navigate("/");
+            }}
           >
             Continue Shopping
           </motion.button>
@@ -103,82 +108,82 @@ const Cart = () => {
               className="space-y-6 "
               variants={motionVariants.fadeInUp}
             >
-              {cart.map((item, index) => (
-                <motion.div
-                  key={item.id}
-                  className="card flex backdrop-blur-sm items-center space-x-4"
-                  variants={motionVariants.card}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover="hover"
-                >
-                  <motion.img
-                    src={item.imageUrl}
-                    alt={item.title}
-                    className="w-20 h-20 object-cover rounded-lg"
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  />
-
-                  <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-white">
-                      {item.title}
-                    </h3>
-
-                    <p className="text-white text-sm line-clamp-2">
-                      {item.description}
-                    </p>
-
-                    <p className="text-white font-bold">
-                      ${item.price.toFixed(2)}
-                    </p>
-                  </div>
-
-                  <div className="flex items-center space-x-2">
-                    <motion.button
-                      onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                      className="bg-white/10 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      -
-                    </motion.button>
-
-                    <span className="w-8 text-center font-semibold text-white">
-                      {item.quantity}
-                    </span>
-
-                    <motion.button
-                      onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                      className="bg-white/10 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      +
-                    </motion.button>
-                  </div>
-
-                  <motion.button
-                    onClick={() => removeFromCart(item.id)}
-                    className="text-red-400 hover:text-red-500 p-2"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
+              {cart.map((item, index) => {
+                const imgSrc = item.image || item.imageUrl || arduinoImg;
+                return (
+                  <motion.div
+                    key={item.id}
+                    className="card flex backdrop-blur-sm items-center space-x-3"
+                    variants={motionVariants.card}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover="hover"
                   >
-                    <svg
-                      className="w-5 h-5"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                    <motion.img
+                      src={imgSrc}
+                      alt={item.title}
+                      className="w-20 h-20 object-cover rounded-lg"
+                      whileHover={{ scale: 1.05 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                    />
+
+                    <div className="flex-1">
+                      <h3 className="text-lg font-semibold text-white">
+                        {item.title}
+                      </h3>
+                      <p className="text-white font-bold">
+                        ${item.price.toFixed(2)}
+                      </p>
+                    </div>
+
+                    <div className="flex items-center space-x-2">
+                      <motion.button
+                        onClick={() =>
+                          updateQuantity(item.id, Math.max(1, item.quantity - 1))
+                        }
+                        className="bg-white/10 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        -
+                      </motion.button>
+
+                      <span className="w-8 text-center font-semibold text-white">
+                        {item.quantity}
+                      </span>
+
+                      <motion.button
+                        onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                        className="bg-white/10 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        +
+                      </motion.button>
+                    </div>
+
+                    <motion.button
+                      onClick={() => removeFromCart(item.id)}
+                      className="text-red-400 hover:text-red-500 p-2"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                      />
-                    </svg>
-                  </motion.button>
-                </motion.div>
-              ))}
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                        />
+                      </svg>
+                    </motion.button>
+                  </motion.div>
+                );
+              })}
             </motion.div>
 
             {/* Order Summary */}
@@ -232,7 +237,10 @@ const Cart = () => {
                 className="w-full mt-8 bg-white text-black font-bold py-4 px-6 rounded-lg shadow-lg hover:bg-white/90 transition-all duration-300 transform hover:-translate-y-1"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() =>{  handleScrollTop(); navigate("/checkout")}}
+                onClick={() => {
+                  handleScrollTop();
+                  navigate("/checkout");
+                }}
               >
                 Proceed to Checkout
               </motion.button>
@@ -241,7 +249,10 @@ const Cart = () => {
                 className="w-full mt-4 bg-transparent border-2 border-white text-white font-semibold py-3 px-6 rounded-lg hover:bg-white/10 transition-all duration-300"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() =>{handleScrollTop(); navigate("/catalog")}}
+                onClick={() => {
+                  handleScrollTop();
+                  navigate("/catalog");
+                }}
               >
                 Continue Browsing
               </motion.button>

@@ -2,6 +2,10 @@ import React from "react";
 import { motion } from "framer-motion";
 import { motionVariants } from "../animations/motionVariants";
 import GlareHover from "./GlareHover";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import arduinoImg from "../assets/arduino.png";
+
 
 const ProductCard = ({
   title,
@@ -10,7 +14,31 @@ const ProductCard = ({
   imageUrl,
   onAddToCart,
   onClick,
+  product,
 }) => {
+  const notify = () =>
+    toast.success(`${title} added to cart!`, {
+      position: "bottom-right",
+      autoClose: 2500,
+      theme: "dark",
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+    });
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
+    if (typeof onAddToCart === "function") {
+      onAddToCart();
+      notify();
+    }
+  };
+
+  const imgSrc = product?.image || imageUrl || arduinoImg ;
+  const displayPrice =
+    typeof price === "number" ? `$${price.toFixed(2)}` : price ?? "N/A";
+
   return (
     <motion.div
       className="card group backdrop-blur-sm cursor-pointer"
@@ -20,7 +48,6 @@ const ProductCard = ({
       whileTap={{ scale: 0.98 }}
       onClick={onClick}
     >
-      {/* IMAGE AREA WITH GLARE, FULL SIZE */}
       <GlareHover
         glareColor="#ffffff"
         glareOpacity={0.25}
@@ -28,11 +55,11 @@ const ProductCard = ({
         glareSize={250}
         transitionDuration={800}
         playOnce={false}
-        style={{ width: "100%", height: "100%" }}   // important
+        style={{ width: "100%", height: "100%" }}
       >
         <div className="relative w-full h-32 sm:h-40 md:h-48 overflow-hidden rounded-t-xl">
           <img
-            src={imageUrl}
+            src={imgSrc}
             alt={title}
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
           />
@@ -40,7 +67,6 @@ const ProductCard = ({
         </div>
       </GlareHover>
 
-      {/* CONTENT */}
       <div className="p-4 md:p-6">
         <motion.h2
           className="text-lg md:text-xl font-bold mb-2 text-white"
@@ -51,15 +77,7 @@ const ProductCard = ({
           {title}
         </motion.h2>
 
-        <motion.p
-          className="text-white mb-4 line-clamp-2 text-sm md:text-base"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
-          {description}
-        </motion.p>
-
+        
         <motion.div
           className="flex justify-between items-center mb-4"
           initial={{ opacity: 0, y: 10 }}
@@ -67,16 +85,13 @@ const ProductCard = ({
           transition={{ delay: 0.3 }}
         >
           <span className="text-xl md:text-2xl font-bold text-white">
-            ${price.toFixed(2)}
+            {displayPrice}
           </span>
         </motion.div>
 
         <motion.button
-          onClick={(e) => {
-            e.stopPropagation();
-            onAddToCart();
-          }}
-          className="w-full bg-transparent text-white font-semibold py-2 md:py-3 px-4 md:px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-sm md:text-base "
+          onClick={handleAddToCart}
+          className="w-full bg-transparent text-white font-semibold py-2 md:py-3 px-4 md:px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 text-sm md:text-base"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           initial={{ opacity: 0, y: 10 }}
