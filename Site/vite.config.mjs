@@ -23,6 +23,7 @@ export default defineConfig({
       output: {
         manualChunks: undefined
       }
-    }
+    },
+    historyApiFallback: true
   }
 });

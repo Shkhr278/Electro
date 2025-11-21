@@ -72,7 +72,7 @@ const Cart = () => {
             className="bg-transparent border-2 border-white text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-white hover:text-black transition-all duration-300 transform hover:-translate-y-1"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => navigate("/")}
+            onClick={() => {handleScrollTop; navigate("/")}}
           >
             Continue Shopping
           </motion.button>
@@ -241,7 +241,7 @@ const Cart = () => {
                 className="w-full mt-4 bg-transparent border-2 border-white text-white font-semibold py-3 px-6 rounded-lg hover:bg-white/10 transition-all duration-300"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => navigate("/catalog")}
+                onClick={() =>{handleScrollTop; navigate("/catalog")}}
               >
                 Continue Browsing
               </motion.button>
