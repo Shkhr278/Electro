@@ -193,7 +193,7 @@ const Home = () => {
               price={product.price}
               imageUrl={product.imageUrl}
               onAddToCart={() => addToCart(product)}
-              onClick={() => navigate(`/component/${product.id}`)}
+              onClick={() => {handleScrollTop();navigate(`/component/${product.id}`)}}
             />
           </motion.div>
         ))}
