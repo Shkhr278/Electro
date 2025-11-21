@@ -4,7 +4,6 @@ import { motionVariants } from "../animations/motionVariants";
 import GlareHover from "./GlareHover";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import arduinoImg from "../assets/arduino.png";
 
 
 const ProductCard = ({
@@ -19,7 +18,7 @@ const ProductCard = ({
   const notify = () =>
     toast.success(`${title} added to cart!`, {
       position: "bottom-right",
-      autoClose: 2500,
+      autoClose: 2000,
       theme: "dark",
       hideProgressBar: false,
       closeOnClick: true,
@@ -35,7 +34,7 @@ const ProductCard = ({
     }
   };
 
-  const imgSrc = product?.image || imageUrl || arduinoImg ;
+  const imgSrc = product?.image || imageUrl ;
   const displayPrice =
     typeof price === "number" ? `$${price.toFixed(2)}` : price ?? "N/A";
 

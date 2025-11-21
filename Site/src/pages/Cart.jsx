@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import { useAppContext } from "../contexts/AppContext";
 import { motionVariants } from "../animations/motionVariants";
 import BlurText from "../components/BlurText";
-import arduinoImg from "../assets/arduino.png";
-
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -109,7 +107,7 @@ const Cart = () => {
               variants={motionVariants.fadeInUp}
             >
               {cart.map((item, index) => {
-                const imgSrc = item.image || item.imageUrl || arduinoImg;
+                const imgSrc = item.image || item.imageUrl ;
                 return (
                   <motion.div
                     key={item.id}

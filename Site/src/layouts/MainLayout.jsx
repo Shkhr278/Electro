@@ -1,12 +1,14 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Silk from "../components/Silk"; // make sure this path matches your file
+import Silk from "../components/Silk";
 import { Outlet } from "react-router-dom";
+import FloatingCartButton from "../components/FloatingCartButton"; // ← ADD THIS
 
 const MainLayout = () => {
   return (
     <div className="relative min-h-screen overflow-hidden">
+      
       {/* Silk background */}
       <div className="fixed inset-0 -z-10">
         <Silk
@@ -28,6 +30,9 @@ const MainLayout = () => {
 
         <Footer />
       </div>
+
+      {/* Floating Cart Button (always rendered, visible only if cart has items) */}
+      <FloatingCartButton />
     </div>
   );
 };

@@ -37,8 +37,8 @@ const ComponentDetail = () => {
   const handleAddToCart = () => {
     addToCart(component);
     toast.success(`${component.name} added to cart!`, {
-      position: "bottom-left",
-      autoClose: 3000,
+      position: "bottom-right",
+      autoClose: 2000,
       theme: "dark",
       hideProgressBar: false,
       closeOnClick: true,
