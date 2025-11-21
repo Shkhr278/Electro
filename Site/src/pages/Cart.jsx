@@ -15,7 +15,7 @@ const Cart = () => {
     });
   };
   const handleAnimationComplete = () => {
-    console.log("Animation completed!");
+    console.log("Animation completed in Cart Page!");
   };
   const { cart, removeFromCart, updateQuantity, getTotalPrice, getTotalItems } =
     useAppContext();

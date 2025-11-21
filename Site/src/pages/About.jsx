@@ -5,7 +5,7 @@ import BlurText from "../components/BlurText";
 
 const About = () => {
   const handleAnimationComplete = () => {
-    console.log("Animation completed!");
+    console.log("Animation completed in About Us Page!");
   };
   return (
     <motion.div

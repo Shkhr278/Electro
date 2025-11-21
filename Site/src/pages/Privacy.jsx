@@ -5,7 +5,7 @@ import BlurText from "../components/BlurText";
 
 const Privacy = () => {  
   const handleAnimationComplete = () => {
-    console.log("Animation completed!");
+    console.log("Animation completed in Privacy Page!");
   };
   return (
     <motion.div

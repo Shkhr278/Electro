@@ -11,7 +11,7 @@ const Catalog = () => {
   const { addToCart } = useAppContext();
   const navigate = useNavigate();
   const handleAnimationComplete = () => {
-    console.log("Animation completed!");
+    console.log("Animation completed in Catalogue Page!");
   };
 
   const components = [

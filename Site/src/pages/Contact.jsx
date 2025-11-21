@@ -5,7 +5,7 @@ import BlurText from "../components/BlurText";
 
 const Contact = () => {
   const handleAnimationComplete = () => {
-    console.log("Animation completed!");
+    console.log("Animation completed in Contact Page!");
   };
   const [formData, setFormData] = useState({
     name: "",

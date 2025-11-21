@@ -6,7 +6,7 @@ import BlurText from "../components/BlurText";
 
 const Checkout = () => {
   const handleAnimationComplete = () => {
-    console.log("Animation completed!");
+    console.log("Animation completed in Checkout page!");
   };
   const { cart, getTotalPrice, getTotalItems } = useAppContext();
   const [formData, setFormData] = useState({
