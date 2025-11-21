@@ -7,6 +7,13 @@ import BlurText from "../components/BlurText";
 
 const Cart = () => {
   const navigate = useNavigate();
+  const handleScrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth", // change to "smooth" if you want animation
+    });
+  };
   const handleAnimationComplete = () => {
     console.log("Animation completed!");
   };
@@ -225,7 +232,7 @@ const Cart = () => {
                 className="w-full mt-8 bg-white text-black font-bold py-4 px-6 rounded-lg shadow-lg hover:bg-white/90 transition-all duration-300 transform hover:-translate-y-1"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={() => navigate("/checkout")}
+                onClick={() =>{  handleScrollTop(); navigate("/checkout")}}
               >
                 Proceed to Checkout
               </motion.button>

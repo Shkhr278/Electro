@@ -9,6 +9,13 @@ import BlurText from "../components/BlurText";
 
 const Home = () => {
   const navigate = useNavigate();
+  const handleScrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth", // change to "smooth" if you want animation
+    });
+  };
   const handleAnimationComplete = () => {
     console.log("Animation completed!");
   };
@@ -203,7 +210,7 @@ const Home = () => {
           className="bg-transparent backdrop-blur-sm text-white font-bold py-4 px-8 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          onClick={() => navigate("/catalog")}
+          onClick={() => { handleScrollTop(); navigate("/catalog")}}
         >
           View All Products
         </motion.button>
