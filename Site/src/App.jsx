@@ -36,7 +36,7 @@ const App = () => {
       </Router>
 
       <ToastContainer
-        position="bottom-right"
+        position="bottom-left"
         autoClose={2000}
         hideProgressBar={false}
         newestOnTop={false}

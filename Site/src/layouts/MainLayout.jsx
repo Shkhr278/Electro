@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Silk from "../components/Silk";
 import { Outlet } from "react-router-dom";
-import FloatingCartButton from "../components/FloatingCartButton"; // ← ADD THIS
+import FloatingCartButton from "../components/FloatingCartButton";
 
 const MainLayout = () => {
   return (

@@ -15,7 +15,7 @@ const ProductCard = ({
 }) => {
   const notify = () =>
     toast.success(`${title} added to cart!`, {
-      position: "bottom-right",
+      position: "bottom-left",
       autoClose: 2000,
       theme: "dark",
       hideProgressBar: false,
