@@ -21,6 +21,13 @@ const Catalog = () => {
   const handleAnimationComplete = () => {
     console.log("Animation completed in Catalogue Page!");
   };
+  const handleScrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth", // change to "smooth" if you want animation
+    });
+  };
 
   const components = [
     {
@@ -127,7 +134,7 @@ const Catalog = () => {
               price={component.price}
               imageUrl={component.image}
               onAddToCart={() => addToCart(component)}
-              onClick={() => navigate(`/component/${component.id}`)}
+              onClick={() => {handleScrollTop(); navigate(`/component/${component.id}`)}}
             />
           </motion.div>
         ))}

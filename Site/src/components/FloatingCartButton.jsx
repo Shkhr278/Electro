@@ -6,6 +6,13 @@ import { useAppContext } from "../contexts/AppContext";
 const FloatingCartButton = () => {
   const navigate = useNavigate();
   const { cart } = useAppContext();
+   const handleScrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth", // change to "smooth" if you want animation
+    });
+  };
 
   const totalItems =
     cart?.reduce((sum, item) => sum + (item.quantity ?? 1), 0) ?? 0;
@@ -15,7 +22,7 @@ const FloatingCartButton = () => {
   return (
     <button
       aria-label="Open cart"
-      onClick={() => navigate("/cart")}
+      onClick={() => {handleScrollTop(); navigate("/cart")}}
       className="
         fixed right-5 bottom-5 sm:right-8 sm:bottom-8
         z-[99999] flex items-center gap-3

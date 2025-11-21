@@ -5,10 +5,8 @@ import GlareHover from "./GlareHover";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 const ProductCard = ({
   title,
-  description,
   price,
   imageUrl,
   onAddToCart,
