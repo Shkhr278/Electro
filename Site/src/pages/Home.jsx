@@ -7,6 +7,11 @@ import { motionVariants } from "../animations/motionVariants";
 import { useAppContext } from "../contexts/AppContext";
 import BlurText from "../components/BlurText";
 import arduinoImg from "../assets/arduino.png";
+import raspberryPiImg from "../assets/raspberrypi.png";
+import esp32Img from "../assets/esp32.png";
+import ledStripImg from "../assets/ledstrip.png";
+import servoMotorImg from "../assets/servomotor.png";
+import breadboardImg from "../assets/breadboard.png";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -44,10 +49,9 @@ const Home = () => {
       description:
         "Single-board computer with dual-band wireless LAN and Bluetooth 5.0.",
       price: 35.99,
-      imageUrl:
-        "https://via.placeholder.com/400x300/DC2626/FFFFFF?text=Raspberry+Pi+4",
       category: "Development Boards",
       subcategory: "Raspberry Pi",
+      image: raspberryPiImg,
     },
     {
       id: 3,
@@ -55,9 +59,9 @@ const Home = () => {
       description:
         "Low-cost, low-power system on a chip microcontroller with Wi-Fi and Bluetooth.",
       price: 8.99,
-      imageUrl: "https://via.placeholder.com/400x300/059669/FFFFFF?text=ESP32",
       category: "Development Boards",
       subcategory: "ESP32",
+      image: esp32Img,
     },
     {
       id: 4,
@@ -65,10 +69,9 @@ const Home = () => {
       description:
         "Flexible RGB LED strip with 30 LEDs per meter, waterproof and cuttable.",
       price: 15.99,
-      imageUrl:
-        "https://via.placeholder.com/400x300/7C3AED/FFFFFF?text=LED+Strip",
       category: "LEDs",
       subcategory: "RGB Strips",
+      image: ledStripImg,
     },
     {
       id: 5,
@@ -76,10 +79,9 @@ const Home = () => {
       description:
         "High-torque servo motor with metal gears, ideal for robotics projects.",
       price: 12.99,
-      imageUrl:
-        "https://via.placeholder.com/400x300/EA580C/FFFFFF?text=Servo+Motor",
       category: "Motors",
       subcategory: "Servo Motors",
+      image: servoMotorImg,
     },
     {
       id: 6,
@@ -87,10 +89,9 @@ const Home = () => {
       description:
         "Solderless breadboard for prototyping electronic circuits without soldering.",
       price: 6.99,
-      imageUrl:
-        "https://via.placeholder.com/400x300/0891B2/FFFFFF?text=Breadboard",
       category: "Prototyping Tools",
       subcategory: "Breadboards",
+      image: breadboardImg,
     },
   ];
 
@@ -191,7 +192,7 @@ const Home = () => {
               title={product.title}
               description={product.description}
               price={product.price}
-              imageUrl={product.imageUrl}
+              imageUrl={product.image}
               onAddToCart={() => addToCart(product)}
               onClick={() => {
                 handleScrollTop();
