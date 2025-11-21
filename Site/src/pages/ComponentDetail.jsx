@@ -16,7 +16,7 @@ import inductorImg from "../assets/inductor.png";
 import transistorImg from "../assets/transistor.png";
 import raspberryPiImg from "../assets/raspberrypi.png";
 import esp32Img from "../assets/esp32.png";
-import ledStripImg from "../assets/ledstrip.png";
+import ledstripImg from "../assets/ledstrip.png";
 import servoMotorImg from "../assets/servomotor.png";
 
 const ComponentDetail = () => {
@@ -124,7 +124,7 @@ const ComponentDetail = () => {
       description:
         "Flexible RGB LED strip with 30 LEDs per meter, waterproof and cuttable.",
       price: 15.99,
-      image: ledStripImg,
+      image: ledstripImg,
       category: "LEDs",
     },
     {
