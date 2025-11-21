@@ -6,8 +6,6 @@ import { motionVariants } from "../animations/motionVariants";
 import { useAppContext } from "../contexts/AppContext";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-// images must match those used in Catalog.jsx
 import resistorImg from "../assets/resistor.png";
 import capacitorImg from "../assets/capacitor.png";
 import ledImg from "../assets/led.png";
@@ -16,12 +14,16 @@ import breadboardImg from "../assets/breadboard.png";
 import jumperWiresImg from "../assets/jumperwires.png";
 import inductorImg from "../assets/inductor.png";
 import transistorImg from "../assets/transistor.png";
+import raspberryPiImg from "../assets/raspberrypi.png";
+import esp32Img from "../assets/esp32.png";
+import ledStripImg from "../assets/ledstrip.png";
+import servoMotorImg from "../assets/servomotor.png";
 
 const ComponentDetail = () => {
   const { id } = useParams();
   const { addToCart } = useAppContext();
 
-  // same data shape as Catalog.jsx (keeps IDs, titles, images, prices, descriptions consistent)
+  // unified list including Catalog + Home products (IDs are strings)
   const components = [
     {
       id: "1",
@@ -87,6 +89,62 @@ const ComponentDetail = () => {
       image: transistorImg,
       category: "Semiconductors",
     },
+
+    // Home-only products now added to component details
+    {
+      id: "9",
+      title: "Arduino Uno R3",
+      description:
+        "Microcontroller board based on the ATmega328P with 14 digital I/O pins.",
+      price: 22.99,
+      image: arduinoImg,
+      category: "Microcontrollers",
+    },
+    {
+      id: "10",
+      title: "Raspberry Pi 4",
+      description:
+        "Single-board computer with dual-band wireless LAN and Bluetooth 5.0.",
+      price: 35.99,
+      image: raspberryPiImg,
+      category: "Development Boards",
+    },
+    {
+      id: "11",
+      title: "ESP32 Development Board",
+      description:
+        "Low-cost, low-power system on a chip microcontroller with Wi-Fi and Bluetooth.",
+      price: 8.99,
+      image: esp32Img,
+      category: "Development Boards",
+    },
+    {
+      id: "12",
+      title: "LED Strip 5M",
+      description:
+        "Flexible RGB LED strip with 30 LEDs per meter, waterproof and cuttable.",
+      price: 15.99,
+      image: ledStripImg,
+      category: "LEDs",
+    },
+    {
+      id: "13",
+      title: "Servo Motor MG996R",
+      description:
+        "High-torque servo motor with metal gears, ideal for robotics projects.",
+      price: 12.99,
+      image: servoMotorImg,
+      category: "Motors",
+    },
+    {
+      id: "14",
+      title: "Breadboard 830 Points",
+      description:
+        "Solderless breadboard for prototyping electronic circuits without soldering.",
+      price: 6.99,
+      image: breadboardImg,
+      category: "Prototyping Tools",
+    },
   ];
 
   const component = components.find((c) => c.id === id);
@@ -102,10 +160,7 @@ const ComponentDetail = () => {
   }
 
   const handleAddToCart = () => {
-    // add the exact catalog item object to cart so shapes match
     addToCart(component);
-
-    // toast placed at bottom-left, dark theme, 3s auto-close (matches site settings)
     toast.success(`${component.title} added to cart!`, {
       position: "bottom-left",
       autoClose: 3000,
@@ -148,7 +203,8 @@ const ComponentDetail = () => {
                   {component.title}
                 </h1>
                 <p className="mt-1 text-sm text-white/60">
-                  ID: <span className="font-mono text-xs text-white/70">{id}</span>
+                  ID:{" "}
+                  <span className="font-mono text-xs text-white/70">{id}</span>
                 </p>
               </div>
 
@@ -161,7 +217,9 @@ const ComponentDetail = () => {
                 <p className="text-3xl font-bold text-emerald-300">
                   ${component.price.toFixed(2)}
                 </p>
-                <p className="text-xs text-white/60">Inclusive of basic components pricing</p>
+                <p className="text-xs text-white/60">
+                  Inclusive of basic components pricing
+                </p>
 
                 <div className="w-full mt-4">
                   <motion.button
@@ -198,8 +256,9 @@ const ComponentDetail = () => {
                   Description
                 </h2>
                 <p className="mt-2 text-sm leading-relaxed text-white/80">
-                  {component.description}. This component is ideal for use in prototyping,
-                  hobby projects, and educational electronics experiments.
+                  {component.description}. This component is ideal for use in
+                  prototyping, hobby projects, and educational electronics
+                  experiments.
                 </p>
               </div>
 
@@ -210,7 +269,9 @@ const ComponentDetail = () => {
                 <ul className="space-y-1.5">
                   <li className="flex items-center justify-between">
                     <span className="text-white/60">Category</span>
-                    <span className="font-medium text-white/90">{component.category}</span>
+                    <span className="font-medium text-white/90">
+                      {component.category}
+                    </span>
                   </li>
                   <li className="flex items-center justify-between">
                     <span className="text-white/60">Stock status</span>
@@ -221,12 +282,13 @@ const ComponentDetail = () => {
                   </li>
                   <li className="flex items-center justify-between">
                     <span className="text-white/60">Ships in</span>
-                    <span className="font-medium text-white/90">1–2 business days</span>
+                    <span className="font-medium text-white/90">
+                      1–2 business days
+                    </span>
                   </li>
                 </ul>
               </div>
             </div>
-
           </div>
         </div>
       </motion.div>

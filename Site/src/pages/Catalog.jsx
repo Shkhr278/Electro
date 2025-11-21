@@ -1,4 +1,3 @@
-// Catalog.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import ProductCard from "../components/ProductCard";
@@ -13,7 +12,11 @@ import arduinoImg from "../assets/arduino.png";
 import breadboardImg from "../assets/breadboard.png";
 import jumperWiresImg from "../assets/jumperwires.png";
 import inductorImg from "../assets/inductor.png";
-import transistorImg from "../assets/transistor.png"; 
+import transistorImg from "../assets/transistor.png";
+import raspberryPiImg from "../assets/raspberrypi.png";
+import esp32Img from "../assets/esp32.png";
+import ledStripImg from "../assets/ledstrip.png";
+import servoMotorImg from "../assets/servomotor.png";
 
 const Catalog = () => {
   const { addToCart } = useAppContext();
@@ -86,6 +89,54 @@ const Catalog = () => {
       price: 5.0,
       image: transistorImg,
     },
+    {
+      id: "9",
+      title: "Arduino Uno R3",
+      description:
+        "Microcontroller board based on the ATmega328P with 14 digital input/output pins.",
+      price: 22.99,
+      image: arduinoImg,
+    },
+    {
+      id: "10",
+      title: "Raspberry Pi 4",
+      description:
+        "Single-board computer with dual-band wireless LAN and Bluetooth 5.0.",
+      price: 35.99,
+      image: raspberryPiImg,
+    },
+    {
+      id: "11",
+      title: "ESP32 Development Board",
+      description:
+        "Low-cost, low-power system on a chip microcontroller with Wi-Fi and Bluetooth.",
+      price: 8.99,
+      image: esp32Img,
+    },
+    {
+      id: "12",
+      title: "LED Strip 5M",
+      description:
+        "Flexible RGB LED strip with 30 LEDs per meter, waterproof and cuttable.",
+      price: 15.99,
+      image: ledStripImg,
+    },
+    {
+      id: "13",
+      title: "Servo Motor MG996R",
+      description:
+        "High-torque servo motor with metal gears, ideal for robotics projects.",
+      price: 12.99,
+      image: servoMotorImg,
+    },
+    {
+      id: "14",
+      title: "Breadboard 830 Points",
+      description:
+        "Solderless breadboard for prototyping electronic circuits without soldering.",
+      price: 6.99,
+      image: breadboardImg,
+    },
   ];
 
   return (
@@ -134,7 +185,10 @@ const Catalog = () => {
               price={component.price}
               imageUrl={component.image}
               onAddToCart={() => addToCart(component)}
-              onClick={() => {handleScrollTop(); navigate(`/component/${component.id}`)}}
+              onClick={() => {
+                handleScrollTop();
+                navigate(`/component/${component.id}`);
+              }}
             />
           </motion.div>
         ))}

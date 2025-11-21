@@ -1,3 +1,4 @@
+// src/pages/Home.jsx
 import React, { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -19,7 +20,7 @@ const Home = () => {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "smooth", // change to "smooth" if you want animation
+      behavior: "smooth",
     });
   };
   const handleAnimationComplete = () => {
@@ -32,9 +33,10 @@ const Home = () => {
   const [selectedSubcategory, setSelectedSubcategory] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
+  // IDs are strings to match ComponentDetail and Catalog routing
   const products = [
     {
-      id: 1,
+      id: "9",
       title: "Arduino Uno R3",
       description:
         "Microcontroller board based on the ATmega328P with 14 digital input/output pins.",
@@ -44,7 +46,7 @@ const Home = () => {
       image: arduinoImg,
     },
     {
-      id: 2,
+      id: "10",
       title: "Raspberry Pi 4",
       description:
         "Single-board computer with dual-band wireless LAN and Bluetooth 5.0.",
@@ -54,7 +56,7 @@ const Home = () => {
       image: raspberryPiImg,
     },
     {
-      id: 3,
+      id: "11",
       title: "ESP32 Development Board",
       description:
         "Low-cost, low-power system on a chip microcontroller with Wi-Fi and Bluetooth.",
@@ -64,7 +66,7 @@ const Home = () => {
       image: esp32Img,
     },
     {
-      id: 4,
+      id: "12",
       title: "LED Strip 5M",
       description:
         "Flexible RGB LED strip with 30 LEDs per meter, waterproof and cuttable.",
@@ -74,7 +76,7 @@ const Home = () => {
       image: ledStripImg,
     },
     {
-      id: 5,
+      id: "13",
       title: "Servo Motor MG996R",
       description:
         "High-torque servo motor with metal gears, ideal for robotics projects.",
@@ -84,7 +86,7 @@ const Home = () => {
       image: servoMotorImg,
     },
     {
-      id: 6,
+      id: "14",
       title: "Breadboard 830 Points",
       description:
         "Solderless breadboard for prototyping electronic circuits without soldering.",
@@ -196,7 +198,7 @@ const Home = () => {
               onAddToCart={() => addToCart(product)}
               onClick={() => {
                 handleScrollTop();
-                navigate(`/component/${product.id}`);
+                navigate(`/component/${String(product.id)}`);
               }}
             />
           </motion.div>
