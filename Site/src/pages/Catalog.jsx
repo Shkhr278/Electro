@@ -6,6 +6,14 @@ import { motion } from "framer-motion";
 import { motionVariants } from "../animations/motionVariants";
 import { useAppContext } from "../contexts/AppContext";
 import BlurText from "../components/BlurText";
+import resistorImg from "../assets/resistor.png";
+import capacitorImg from "../assets/capacitor.png";
+import ledImg from "../assets/led.png";
+import arduinoImg from "../assets/arduino.png";
+import breadboardImg from "../assets/breadboard.png";
+import jumperWiresImg from "../assets/jumperwires.png";
+import inductorImg from "../assets/inductor.png";
+import transistorImg from "../assets/transistor.png"; 
 
 const Catalog = () => {
   const { addToCart } = useAppContext();
@@ -20,56 +28,56 @@ const Catalog = () => {
       title: "Resistor 10kΩ",
       description: "High precision resistor",
       price: 0.5,
-      imageUrl: "https://via.placeholder.com/300x200?text=Resistor",
+      image: resistorImg,
     },
     {
       id: "2",
       title: "Capacitor 100μF",
       description: "Electrolytic capacitor",
       price: 1.2,
-      imageUrl: "https://via.placeholder.com/300x200?text=Capacitor",
+      image: capacitorImg,
     },
     {
       id: "3",
       title: "LED Red",
       description: "5mm red LED",
       price: 0.3,
-      imageUrl: "https://via.placeholder.com/300x200?text=LED",
+      image: ledImg,
     },
     {
       id: "4",
       title: "Arduino Uno",
       description: "Microcontroller board",
       price: 25.0,
-      imageUrl: "https://via.placeholder.com/300x200?text=Arduino",
+      image: arduinoImg,
     },
     {
       id: "5",
       title: "Breadboard",
       description: "830 tie-points breadboard",
       price: 8.5,
-      imageUrl: "https://via.placeholder.com/300x200?text=Breadboard",
+      image: breadboardImg,
     },
     {
       id: "6",
       title: "Jumper Wires",
       description: "Male to male jumper wires",
       price: 5.0,
-      imageUrl: "https://via.placeholder.com/300x200?text=Jumper+Wires",
+      image: jumperWiresImg,
     },
     {
       id: "7",
-      title: "Jumper Wires",
+      title: "Inductor 10mH",
       description: "Male to male jumper wires",
       price: 5.0,
-      imageUrl: "https://via.placeholder.com/300x200?text=Jumper+Wires",
+      image: inductorImg,
     },
     {
       id: "8",
-      title: "Jumper Wires",
+      title: "Transistor",
       description: "Male to male jumper wires",
       price: 5.0,
-      imageUrl: "https://via.placeholder.com/300x200?text=Jumper+Wires",
+      image: transistorImg,
     },
   ];
 
@@ -117,7 +125,7 @@ const Catalog = () => {
               title={component.title}
               description={component.description}
               price={component.price}
-              imageUrl={component.imageUrl}
+              imageUrl={component.image}
               onAddToCart={() => addToCart(component)}
               onClick={() => navigate(`/component/${component.id}`)}
             />

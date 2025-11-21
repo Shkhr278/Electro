@@ -1,8 +1,11 @@
+// ComponentDetail.jsx
 import React from "react";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { motionVariants } from "../animations/motionVariants";
 import { useAppContext } from "../contexts/AppContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ComponentDetail = () => {
   const { id } = useParams();
@@ -31,6 +34,19 @@ const ComponentDetail = () => {
     );
   }
 
+  const handleAddToCart = () => {
+    addToCart(component);
+    toast.success(`${component.name} added to cart!`, {
+      position: "bottom-left",
+      autoClose: 3000,
+      theme: "dark",
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+    });
+  };
+
   return (
     <div className="px-4 py-10 sm:px-6 lg:px-8">
       <motion.div
@@ -47,11 +63,9 @@ const ComponentDetail = () => {
         </div>
 
         <div className="card overflow-hidden p-0">
-          {/* Decorative top bar */}
           <div className="h-2 bg-gradient-to-r from-emerald-500/80 to-emerald-300/80" />
 
           <div className="p-6 sm:p-8">
-            {/* Header */}
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div>
                 <h1 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
@@ -76,10 +90,8 @@ const ComponentDetail = () => {
               </div>
             </div>
 
-            {/* Divider */}
             <div className="my-5 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-            {/* Description + specs */}
             <div className="grid gap-6 md:grid-cols-[2fr,1.3fr]">
               <div>
                 <h2 className="text-sm font-semibold uppercase tracking-wide text-white/60">
@@ -120,7 +132,6 @@ const ComponentDetail = () => {
               </div>
             </div>
 
-            {/* Actions */}
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-xs text-white/60">
                 Add this component to your cart and continue exploring more
@@ -131,7 +142,7 @@ const ComponentDetail = () => {
                 whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.97 }}
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-white text-black font-semibold py-2 px-6 shadow-lg hover:bg-white/90 hover:shadow-xl transition-all duration-300"
-                onClick={() => addToCart(component)}
+                onClick={handleAddToCart}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
